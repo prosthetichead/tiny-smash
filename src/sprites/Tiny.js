@@ -1,7 +1,8 @@
 import Phaser from 'phaser'
 
 let facing = 'right';
-let cursors;
+let cursors, jumpButton
+let jumpTimer = 0;
 
 export default class extends Phaser.Sprite {
 
@@ -21,11 +22,12 @@ export default class extends Phaser.Sprite {
 
     //this.animations.play('walk-right', 5, true);
     cursors = game.input.keyboard.createCursorKeys();
+    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.Z);
   }
 
   update () {
     this.body.velocity.x = 0;
-
+    
     if (cursors.left.isDown){
       this.body.velocity.x = -50;
       if (facing != 'left'){
@@ -50,6 +52,11 @@ export default class extends Phaser.Sprite {
       }
       this.animations.stop();
       facing = 'idle';
+    }
+
+    if (jumpButton.isDown && game.time.now > jumpTimer){
+      this.body.velocity.y = -50;
+      jumpTimer = game.time.now + 750;
     }
 
   }

@@ -8,7 +8,7 @@ export default class extends Phaser.State {
     this.fontsLoaded = this.fontsLoaded.bind(this)
 
     this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-    this.scale.setUserScale(2, 2, 0, 0);
+    this.scale.setUserScale(3, 3, 0, 0);
     this.scale.refresh();
   }
 

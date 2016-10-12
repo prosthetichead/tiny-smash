@@ -8,9 +8,10 @@ export default class extends Phaser.Sprite {
 
         game.physics.enable(this, Phaser.Physics.ARCADE)
         this.body.gravity.y = 10;
+        this.body.mass = .5;
         this.frame = value;
         this.value = value;
-        this.body.immovable = true;
+        //this.body.immovable = true;
     }
 
 
